@@ -24,9 +24,7 @@ public class MainActivity extends AppCompatActivity {
         final DBAdapter helper =new DBAdapter (this);
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
         Button btnInsert=(Button) findViewById(R.id.btnInsertar);
-        Button btneliminar=(Button) findViewById(R.id.btnEliminar);
         Button btnmostrar=(Button) findViewById(R.id.btnMostrar);
-        Button btneditar=(Button) findViewById(R.id.btnActualizar);
 
         btnInsert.setOnClickListener(new OnClickListener(){
             @Override
@@ -42,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
                 if(db != null) {
                     helper.open();
                     helper.createTodo(categoria, resumen, desc);
-                    Toast msg = Toast.makeText(getApplicationContext(), "Se inserto en la bd " + cod.getText(), Toast.LENGTH_LONG);
+                    Toast msg = Toast.makeText(getApplicationContext(), "Se inserto en la bd ", Toast.LENGTH_LONG);
                     msg.show();
                 }else{
-                    Toast msg = Toast.makeText(getApplicationContext(), "No ha ingresado datos " + cod.getText(), Toast.LENGTH_LONG);
+                    Toast msg = Toast.makeText(getApplicationContext(), "No ha ingresado datos ", Toast.LENGTH_LONG);
                     msg.show();
                 }
             }
