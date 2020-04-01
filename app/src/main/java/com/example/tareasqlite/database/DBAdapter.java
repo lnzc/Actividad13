@@ -38,16 +38,16 @@ public class DBAdapter {
     //Actualiza la tarea
     public boolean updateTodo(long rowId, String category, String summary, String description) {
         ContentValues updateValues = createContentValues(category, summary, description);
-        return database.update(DATABASE_TABLE, updateValues, KEY_ROWID + "=" + rowId, null) > 0;
+        database.update(DATABASE_TABLE, updateValues, KEY_ROWID + "=" + rowId, null);
     }
     //Borra la tarea
     public boolean deleteTodo(long rowId) {
-        return database.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
+        database.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null);
 
     }
     //Returna un Cursor que contiene todos los items
     public Cursor fetchAllTodos() {
-        return database.query(DATABASE_TABLE, new String[] { KEY_ROWID, KEY_CATEGORY, KEY_SUMMARY, KEY_DESCRIPTION}, null, null, null, null, null);
+        database.query(DATABASE_TABLE, new String[] { KEY_ROWID, KEY_CATEGORY, KEY_SUMMARY, KEY_DESCRIPTION}, null, null, null, null, null);
 
     }
     //Returna un Cursor que contiene la info del item

@@ -9,8 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity_editar"></activity>
-        <activity android:name=".Main_Activity_eliminar" />
         <activity
             android:name=".MainActivity_mostrar"
             android:label="@string/title_activity_main_mostrar"
