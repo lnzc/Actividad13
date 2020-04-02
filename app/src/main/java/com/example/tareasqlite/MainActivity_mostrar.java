@@ -98,6 +98,7 @@ public class MainActivity_mostrar extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             db.deleteTodo(value);
+                            dialog.dismiss();
                         }
                     });
                     // create and show the alert dialog
