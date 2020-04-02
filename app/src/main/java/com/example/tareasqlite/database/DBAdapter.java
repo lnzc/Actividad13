@@ -38,11 +38,11 @@ public class DBAdapter {
     //Actualiza la tarea
     public boolean updateTodo(long rowId, String category, String summary, String description) {
         ContentValues updateValues = createContentValues(category, summary, description);
-        return database.update(DATABASE_TABLE, updateValues, KEY_ROWID + "=" + rowId, null) >0;
+        return database.update(DATABASE_TABLE, updateValues, KEY_ROWID + "=" + rowId, null) > 0;
     }
     //Borra la tarea
     public boolean deleteTodo(long rowId) {
-        return database.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null)>0;
+        return database.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null)> 0;
 
     }
     //Returna un Cursor que contiene todos los items

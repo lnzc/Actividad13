@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,13 +16,13 @@ import com.example.tareasqlite.database.DBAdapter;
 import com.example.tareasqlite.database.DataBaseHelper;
 
 public class MainActivity extends AppCompatActivity {
-
+    EditText cod,cat, sum, des;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         DataBaseHelper dbHelper = new DataBaseHelper(this);
-        final DBAdapter helper =new DBAdapter (this);
+        final DBAdapter helper =new DBAdapter (this).open();
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
         Button btnInsert=(Button) findViewById(R.id.btnInsertar);
         Button btnmostrar=(Button) findViewById(R.id.btnMostrar);
@@ -29,17 +30,13 @@ public class MainActivity extends AppCompatActivity {
         btnInsert.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View view) {
-                TextView cod=(TextView) findViewById(R.id.txtCodigo);
-                TextView cat=(TextView) findViewById(R.id.txtCat);
-                TextView sum=(TextView) findViewById(R.id.txtRes);
-                TextView des=(TextView) findViewById(R.id.txtDes);
-                String codigo=String.valueOf(cod.getText());
-                String categoria=String.valueOf(cat.getText());
-                String resumen=String.valueOf(sum.getText());
-                String desc=String.valueOf(des.getText());
+                 cod=(EditText) findViewById(R.id.txtCodigo);
+                 cat=(EditText) findViewById(R.id.txtCategoria);
+                 sum=(EditText) findViewById(R.id.txtResumen);
+                 des=(EditText) findViewById(R.id.txtDescripcion);
+
                 if(db != null) {
-                    helper.open();
-                    helper.createTodo(categoria, resumen, desc);
+                    helper.createTodo(cat.getText().toString(), sum.getText().toString(), des.getText().toString());
                     Toast msg = Toast.makeText(getApplicationContext(), "Se inserto en la bd ", Toast.LENGTH_LONG);
                     msg.show();
                 }else{
@@ -48,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
             //BOTON MOSTRAR
         btnmostrar.setOnClickListener(new View.OnClickListener(){
             @Override
